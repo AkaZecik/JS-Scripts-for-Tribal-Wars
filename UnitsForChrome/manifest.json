@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+
+    "name": "Do jednostek",
+    "version": "1.0",
+    "permissions": [
+        "tabs",
+        "<all_urls>"
+    ],
+    "browser_action": {},
+    "background": {
+        "scripts": ["jquery.min.js", "background.js"]
+    },
+    "web_accessible_resources": [
+        "getVillagesInjected.js",
+        "getUnitsInjected.js"
+    ]
+}

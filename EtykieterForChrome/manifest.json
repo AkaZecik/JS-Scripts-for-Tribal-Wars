@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "Etykietowianie",
+    "version": "1.0",
+    "permissions": [
+        "tabs",
+        "windows",
+        "<all_urls>"
+    ],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["jquery.min.js", "background.js"]
+    },
+    "web_accessible_resources": [
+        "etykietuj.js",
+        "getGameDataInjected.js"
+    ]
+}

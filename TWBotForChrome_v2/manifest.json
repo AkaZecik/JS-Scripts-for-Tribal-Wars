@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+
+    "name": "Farmer",
+    "description": "automated tribal wars farmer",
+    "version": "1.0",
+    "permissions": [
+        "storage",
+        "tabs",
+        "windows",
+        "<all_urls>"
+    ],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "options_page": "options.html",
+    "background": {
+        "scripts": ["jquery.min.js", "background.js"]
+    },
+    "web_accessible_resources": [
+        "getGameDataInjected.js"
+    ]
+}

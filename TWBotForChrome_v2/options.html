@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Opcje farmera</title>
+    <script src="jquery.min.js"></script>
+    <script src="options.js"></script>
+    <style>
+        input, select {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <table id="options">
+        <tbody>
+            <tr>
+                <td>Wybierz opcje do farmienia: </td>
+                <td>
+                    <select id="farm_on">   
+                        <option value="a">A</option>
+                        <option value="b">B</option>
+                        <option value="c">C</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Farmic co (s): </td>
+                <td>
+                    <input id="farm_time_interval" type="number">
+                </td>
+            </tr>
+            <tr>
+                <td>Maksymalny poziom muru: </td>
+                <td>
+                    <input id="max_wall" type="number">
+                </td>
+            </tr>
+            <tr>
+                <td>Maksymalna odleglosc: </td>
+                <td>
+                    <input id="max_distance" type="number">
+                </td>
+            </tr>
+            <tr>
+                <td>Minimalnie klikac co (ms): </td>
+                <td>
+                    <input id="min_time" type="number">
+                </td>
+            </tr>
+            <tr>
+                <td>Maksymalnie klikac co (ms): </td>
+                <td>
+                    <input id="max_time" type="number">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><button id="save">Zapisz ustawienia</button></td>
+                <td><button id="reset">Przywroc ustawienia systemowe</button></td>
+            </tr>
+            <tr>
+                <td><div id="status_save"></div></td>
+                <td><div id="status_reset"></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

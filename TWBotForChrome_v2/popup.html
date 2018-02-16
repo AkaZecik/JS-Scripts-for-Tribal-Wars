@@ -1,0 +1,95 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+    <head>
+        <title>Farmer do plemion</title>
+        <style>
+            body {
+                font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+                font-size: 100%;
+            }
+            body, html {
+                width: 500px;
+            }
+            input, select {
+                width: 100%;
+            }
+            button#submit {
+                width: 100px;
+                font-size: 16px;
+            }
+        </style>
+
+        <!--
+            - JavaScript and HTML must be in separate files: see our Content Security
+            - Policy documentation[1] for details and explanation.
+            -
+            - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+         -->
+        <script src="jquery.min.js"></script>
+        <script src="popup.js"></script>
+    </head>
+    <body>
+        <h1>Farmer do plemion</h1>
+        <hr>
+        <div id="loading">Trwa ladowanie...</div>
+        <div id="farmer" style="display:none;">
+            <form>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Wybierz grupe do farmienia: </td>
+                            <td>
+                                <select id="group"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Wybierz opcje do farmienia: </td>
+                            <td>
+                                <select id="farm_on">
+                                    <option value="a">A</option>
+                                    <option value="b">B</option>
+                                    <option value="c">C</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Farmic co (s): </td>
+                            <td><input id="farm_time_interval" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Maksymalny poziom muru: </td>
+                            <td><input id="max_wall" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Maksymalna odleglosc: </td>
+                            <td><input id="max_distance" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Minimalnie klikac co (ms): </td>
+                            <td><input id="min_time" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Maksymalnie klikac co (ms): </td>
+                            <td><input id="max_time" type="number"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <button id="submit" type="submit">START</button>
+            </form>
+        </div>
+        <div id="already_farming" style="display:none">
+            Juz farmie!
+        </div>
+        <div id="no_farm" style="display:none">
+            To nie sa plemiona!
+        </div>
+    </body>
+</html>
+
+

@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+
+    "name": "Tribal Wars automated farmer",
+    "description": "The name speaks for itself",
+    "version": "1.0",
+    "permissions": [
+        "tabs",
+        "storage",
+        "https://*.plemiona.pl/*"
+    ],
+    "browser_action": {
+    },
+    "options_page": "options.html",
+    "background": {
+        "scripts": ["jquery.js", "listener.js"]
+    },
+    "web_accessible_resources": [
+        "farm_sender.js"
+    ]
+}
