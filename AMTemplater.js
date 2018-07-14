@@ -2,7 +2,7 @@ javascript:
 
 /*
     Author: AKZ123
-    Version: 3.1.0
+    Version: 3.1.1
     Last update: 07/14/2018 (mm/dd/yyyy)
 */
 
@@ -159,7 +159,7 @@ if("undefined" == typeof AMTemplater) {
 
                         var description = {
                             building: data[1],
-                            relativeLevel: data[3] ? parseInt(data[3]) : 1;
+                            relativeLevel: data[3] ? parseInt(data[3]) : 1
                         };
                         build_description << description;
                     }
