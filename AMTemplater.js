@@ -2,7 +2,7 @@ javascript:
 
 /*
     Author: AKZ123
-    Version: 3.1.2
+    Version: 3.2.0
     Last update: 07/14/2018 (mm/dd/yyyy)
 */
 
@@ -134,14 +134,14 @@ if("undefined" == typeof AMTemplater) {
 
                     var autodemolish = template[0].match(/^autodemolish: (true|false)$/);
                     if(!autodemolish) {
-                        throw "Wiersz 1: Nieprawidłowy format szablonu. Powinno być 'autodemolish: true' lub 'autodemolish: false'.";
+                        console.info("Nie wykryto w pierwszej linijce ani 'autodemolish: true' ani 'autodemolish: false'");
                     }
                     var options = [];
                     $("#add_building option").each(function () {
                         options.push($(this).val());
                     });
                     var build_description = [];
-                    for(var i = 1; i < template.length; i++) {
+                    for(var i = 0; i < template.length; i++) {
                         if(template[i].match(/^\s*$/)) {
                             continue;
                         }
@@ -164,9 +164,11 @@ if("undefined" == typeof AMTemplater) {
                         build_description.push(description);
                     }
 
-                    switch(autodemolish[1]) {
-                        case "true": $("#auto_demolish").prop("checked", true); break;
-                        case "false": $("#auto_demolish").prop("checked", false); break;
+                    if(autodemolish) {
+                        switch(autodemolish[1]) {
+                            case "true": $("#auto_demolish").prop("checked", true); break;
+                            case "false": $("#auto_demolish").prop("checked", false); break;
+                        }
                     }
                     $(".bqremove").click();
                     for(var i = 0; i < build_description.length; i++) {
