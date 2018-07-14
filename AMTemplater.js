@@ -2,7 +2,7 @@ javascript:
 
 /*
     Author: AKZ123
-    Version: 3.1.1
+    Version: 3.1.2
     Last update: 07/14/2018 (mm/dd/yyyy)
 */
 
@@ -146,7 +146,7 @@ if("undefined" == typeof AMTemplater) {
                             continue;
                         }
 
-                        var data = template[i].match(/^\s*([a-zA-Z]+)(\s+([1-9]\d*))?\s*$/);
+                        var data = template[i].match(/^\s*([a-zA-Z]+)(\s+\+?([1-9]\d*))?\s*$/);
 
                         if(!data) {
                             console.error("<Wiersz " + (i+1) + "> Nieprawidłowy format (" + template[i] + ")");
@@ -161,7 +161,7 @@ if("undefined" == typeof AMTemplater) {
                             building: data[1],
                             relativeLevel: data[3] ? parseInt(data[3]) : 1
                         };
-                        build_description << description;
+                        build_description.push(description);
                     }
 
                     switch(autodemolish[1]) {
@@ -170,8 +170,8 @@ if("undefined" == typeof AMTemplater) {
                     }
                     $(".bqremove").click();
                     for(var i = 0; i < build_description.length; i++) {
-                        $("#add_building").val(build_description.building);
-                        $("#add_levels").val(build_description.relativeLevel);
+                        $("#add_building").val(build_description[i].building);
+                        $("#add_levels").val(build_description[i].relativeLevel);
                         $("#add_building").closest("form").submit();
                     }
                 } catch(error) {
