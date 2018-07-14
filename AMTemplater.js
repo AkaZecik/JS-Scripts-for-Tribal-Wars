@@ -2,7 +2,7 @@ javascript:
 
 /*
     Author: AKZ123
-    Version: 3.0.2
+    Version: 3.1.0
     Last update: 07/14/2018 (mm/dd/yyyy)
 */
 
@@ -140,17 +140,28 @@ if("undefined" == typeof AMTemplater) {
                     $("#add_building option").each(function () {
                         options.push($(this).val());
                     });
+                    var build_description = [];
                     for(var i = 1; i < template.length; i++) {
-                        var data = template[i].match(/^([a-zA-Z]+)\s\+(\d+)$/);
+                        if(template[i].match(/^\s*$/)) {
+                            continue;
+                        }
+
+                        var data = template[i].match(/^\s*([a-zA-Z]+)(\s+([1-9]\d*))?\s*$/);
+
                         if(!data) {
-                            throw "Wiersz " + (i+1) + ": Nieprawidłowy format szablonu.";
+                            console.error("<Wiersz " + (i+1) + "> Nieprawidłowy format (" + template[i] + ")");
+                            continue;
                         }
                         if(options.indexOf(data[1]) == -1) {
-                            throw "Wiersz " + (i+1) + ": Nieprawidłowa nazwa budynku (" + data[1] + ").";
+                            console.log("<Wiersz " + (i+1) + "> Nieprawidłowa nazwa budynku (" + data[1] + ")");
+                            continue;
                         }
-                        if(data[2][0] == "0") {
-                            throw "Wiersz " + (i+1) + ": Relatywny poziom nie może zaczynać się od zera.";
-                        }
+
+                        var description = {
+                            building: data[1],
+                            relativeLevel: data[3] ? parseInt(data[3]) : 1;
+                        };
+                        build_description << description;
                     }
 
                     switch(autodemolish[1]) {
@@ -158,12 +169,9 @@ if("undefined" == typeof AMTemplater) {
                         case "false": $("#auto_demolish").prop("checked", false); break;
                     }
                     $(".bqremove").click();
-                    for(var i = 1; i < template.length; i++) {
-                        var data = template[i].match(/^([a-zA-Z]+)\s\+(\d+)$/);
-                        var building = data[1];
-                        var relativeLevel = parseInt(data[2]);
-                        $("#add_building").val(building);
-                        $("#add_levels").val(relativeLevel);
+                    for(var i = 0; i < build_description.length; i++) {
+                        $("#add_building").val(build_description.building);
+                        $("#add_levels").val(build_description.relativeLevel);
                         $("#add_building").closest("form").submit();
                     }
                 } catch(error) {
