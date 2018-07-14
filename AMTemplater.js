@@ -2,20 +2,24 @@ javascript:
 
 /*
     Author: AKZ123
-    Version: 3.0.1
-    Last update: 09/06/2017 (mm/dd/yyyy)
+    Version: 3.0.2
+    Last update: 07/14/2018 (mm/dd/yyyy)
 */
 
 if("undefined" == typeof AMTemplater) {
     var AMTemplater = {
         init: function () {
-            if(game_data.player.account_manager && game_data.screen == "am_village" && game_data.mode != undefined) {
-                if(game_data.mode == "queue")
-                    AMTemplater.queueUI();
-                if(game_data.mode == "template")
-                    AMTemplater.templateUI();
+            if(game_data.features.AccountManager.active) {
+                if(game_data.screen == "am_village" && game_data.mode != undefined) {
+                    if(game_data.mode == "queue")
+                        AMTemplater.queueUI();
+                    if(game_data.mode == "template")
+                        AMTemplater.templateUI();
+                } else {
+                    UI.ErrorMessage("Użyj skryptu w trybie zarządzania szablonami budowy w Menedżerze Konta");
+                }
             } else {
-                UI.ErrorMessage("Użyj skryptu w trybie zarządzania szablonami budowy w Menedżerze Konta");
+                UI.ErrorMessage("Aby użyć skryptu, musisz aktywować Menedżera Konta.");
             }
         },
         queueUI: function () {
